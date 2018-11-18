@@ -15,4 +15,7 @@
     <!-- 生成远程服务代理，可以和本地bean一样使用userService -->
     <dubbo:reference id="userService" interface="com.wf.dubbo.UserService" version="1.0" protocol="dubbo" registry="zookeeper"/>
     <dubbo:reference id="userService2" interface="com.wf.dubbo.UserService" version="2.0" protocol="hessian" registry="zookeeper"/>
+    
+    <!-- 异步调用async=true，只支持dubbo协议 -->
+    <dubbo:reference id="userServiceFuture" interface="com.wf.dubbo.UserServiceFuture" protocol="dubbo" async="true" registry="zookeeper" timeout="3000"/>
 </beans>
