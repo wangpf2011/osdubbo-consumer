@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
+       default-autowire="byName">
+
+    <dubbo:application name="scaffold"  />
+    <dubbo:registry file="D:/eclipse4.7/workspace_dubbo1/osdubbo.cache"
+                    address="zookeeper://106.15.184.181:2181?backup=106.15.186.236:2181,47.100.54.87:2181"/>
+
+    <import resource="classpath*:META-INF/client/user-customer.xml"/>
+
+</beans>
