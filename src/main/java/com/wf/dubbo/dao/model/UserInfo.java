@@ -3,6 +3,7 @@ package com.wf.dubbo.dao.model;
 import com.wf.framework.common.utils.StringUtils;
 
 public class UserInfo {
+	
     private Integer id;
 
     private String account;
