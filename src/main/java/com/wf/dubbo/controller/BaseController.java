@@ -2,12 +2,7 @@ package com.wf.dubbo.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
-/**
- * @author qingyin
- * @date 2016/8/21
- */
 public class BaseController {
     public Logger LOG= LoggerFactory.getLogger(BaseController.class);
 

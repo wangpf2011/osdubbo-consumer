@@ -1,8 +1,5 @@
 package com.wf.dubbo.controller;
 
-/**
- * Created by Administrator on 2016/5/29.
- */
 public class ResponseData {
 
     private int status;

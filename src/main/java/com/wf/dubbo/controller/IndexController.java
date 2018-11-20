@@ -19,7 +19,6 @@ public class IndexController extends BaseController{
     @Autowired
     UserService userServices;
 
-
     @RequestMapping(value = "/index",method = RequestMethod.GET)
     public String index(HttpServletRequest request){
         if(request.getSession().getAttribute("user")==null){
