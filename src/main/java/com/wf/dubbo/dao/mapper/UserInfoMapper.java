@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface UserInfoMapper extends AutoMapperInteger<UserInfo> {
+	
     int countByExample(UserInfoExample example);
 
     int deleteByExample(UserInfoExample example);
