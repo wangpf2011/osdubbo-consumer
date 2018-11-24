@@ -35,6 +35,14 @@
 
     <!-- 配置静态资源，直接映射到对应的文件夹，DispatcherServlet 不处理 -->
     <mvc:resources mapping="/resources/**" location="/resources/" />
+    
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/**"/>
+    		<mvc:exclude-mapping path="/resources/**"/>
+    		<bean class="com.wf.dubbo.intercept.LoginIntercept"/>
+    	</mvc:interceptor>
+    </mvc:interceptors>
 
     <!-- 定义视图解析器 -->
     <bean id="velocityConfig"

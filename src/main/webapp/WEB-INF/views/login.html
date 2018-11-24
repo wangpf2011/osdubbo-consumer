@@ -87,7 +87,7 @@
                 $('input[name="password"]').val($("#password").val());
             }
             var reqData={loginname:$("#loginname").val(),password:$("#password").val(),rememberMe:$("#rememberMe").is(':checked')};
-            TOOLS.doPost(reqData,'/osdubbo-consumer/index/submitLogin.shtml',function(msg){
+            TOOLS.doPost(reqData,'/osdubbo-consumer/index/doLogin.shtml',function(msg){
                 TOOLS.loadingProgress("hide");
                 if(msg.status==0){
                     setTimeout(function () {

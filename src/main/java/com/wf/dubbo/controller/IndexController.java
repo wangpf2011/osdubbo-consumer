@@ -26,15 +26,39 @@ public class IndexController extends BaseController{
 
     @RequestMapping(value = "/index",method = RequestMethod.GET)
     public String index(HttpServletRequest request){
-        if(request.getSession().getAttribute("user")==null){
+        /*if(request.getSession().getAttribute("user")==null){
             return "/login";
-        }
+        }*/
         return "/index";
     }
 
     @RequestMapping(value = "/login",method = RequestMethod.GET)
+    @Anonymous
     public String login() {
         return "/login";
+    }
+    
+    /**   
+     * @Description: JWT单点登录Session跨域--登录操作
+     *
+     * @param loginname
+     * @param password
+     * @param response
+     * @return ResponseEntity
+     * @throws：异常描述
+     */
+    @SuppressWarnings("rawtypes")
+	@RequestMapping(value="/doLogin",method=RequestMethod.POST)
+    @Anonymous
+    public ResponseEntity doLogin(HttpServletResponse response, String loginname, String password){
+    	UserRequest userRequest = new UserRequest();
+    	userRequest.setName(loginname);
+    	userRequest.setPassword(password);
+        UserResponse userResponse = userServices.login(userRequest);
+        if("000000".equals(userResponse.getCode())) {
+            response.addHeader("Set-Cookie", "access_token="+userResponse.getToken()+";Path=/;HttpOnly");
+        }
+        return ResponseEntity.ok(response);
     }
 
     @RequestMapping(value="/submitLogin",method=RequestMethod.POST)
@@ -54,33 +78,6 @@ public class IndexController extends BaseController{
         return data;
     }
     
-    /**   
-     * @Description: JWT单点登录Session跨域--登录操作
-     *
-     * @param loginname
-     * @param password
-     * @param response
-     * ResponseEntity
-     * @throws：异常描述
-     *
-     * @version: v1.0.0
-     * @author: wangpf
-     * @date: 2018年11月24日 下午10:01:08 
-     */
-    @SuppressWarnings("rawtypes")
-	@RequestMapping(value="/doLogin",method=RequestMethod.POST)
-    @Anonymous
-    public ResponseEntity doLogin(HttpServletResponse response, String loginname, String password){
-    	UserRequest userRequest = new UserRequest();
-    	userRequest.setName(loginname);
-    	userRequest.setPassword(password);
-        UserResponse userResponse = userServices.login(userRequest);
-        if("000000".equals(userResponse.getCode())) {
-            response.addHeader("Set-Cookie", "access_token="+userResponse.getToken()+";Path=/;HttpOnly");
-        }
-        return ResponseEntity.ok(response);
-    }
-
     /**
      * 退出
      * @return
