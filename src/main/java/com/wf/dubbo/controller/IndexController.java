@@ -1,6 +1,7 @@
 package com.wf.dubbo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -9,15 +10,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.wf.dubbo.UserRequest;
 import com.wf.dubbo.UserResponse;
 import com.wf.dubbo.UserService;
+import com.wf.dubbo.support.Anonymous;
+import com.wf.dubbo.support.ResponseData;
+import com.wf.dubbo.support.ResponseEnum;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("/index/")
 public class IndexController extends BaseController{
 
     @Autowired
-    UserService userServices;
+    private UserService userServices;
 
     @RequestMapping(value = "/index",method = RequestMethod.GET)
     public String index(HttpServletRequest request){
@@ -47,6 +52,33 @@ public class IndexController extends BaseController{
         data.setMessage(response.getMsg());
         data.setStatus(ResponseEnum.FAILED.getCode());
         return data;
+    }
+    
+    /**   
+     * @Description: JWT单点登录Session跨域--登录操作
+     *
+     * @param loginname
+     * @param password
+     * @param response
+     * ResponseEntity
+     * @throws：异常描述
+     *
+     * @version: v1.0.0
+     * @author: wangpf
+     * @date: 2018年11月24日 下午10:01:08 
+     */
+    @SuppressWarnings("rawtypes")
+	@RequestMapping(value="/doLogin",method=RequestMethod.POST)
+    @Anonymous
+    public ResponseEntity doLogin(HttpServletResponse response, String loginname, String password){
+    	UserRequest userRequest = new UserRequest();
+    	userRequest.setName(loginname);
+    	userRequest.setPassword(password);
+        UserResponse userResponse = userServices.login(userRequest);
+        if("000000".equals(userResponse.getCode())) {
+            response.addHeader("Set-Cookie", "access_token="+userResponse.getToken()+";Path=/;HttpOnly");
+        }
+        return ResponseEntity.ok(response);
     }
 
     /**

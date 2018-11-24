@@ -8,7 +8,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.alibaba.dubbo.rpc.RpcContext;
 
 public class ConsumerDubboTest {
-
+	
+	@SuppressWarnings("resource")
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("consumer.xml");
         context.start();

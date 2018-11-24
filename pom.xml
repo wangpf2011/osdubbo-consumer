@@ -24,6 +24,7 @@
         <pagehelper-version>4.0.1</pagehelper-version>
         <velocity.version>1.7</velocity.version>
         <velocity-tools.version>2.0</velocity-tools.version>
+        <commons-lang3.version>3.1</commons-lang3.version>
 	</properties>
 	
 	<!-- 设定除中央仓库(repo1.maven.org/maven2/)外的其他仓库,按设定顺序进行查找. -->
@@ -339,6 +340,20 @@
 		  <artifactId>junit</artifactId>
 		  <version>3.8.1</version>
 		  <scope>test</scope>
+		</dependency>
+		
+		<!-- JWT相关 -->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.6.0</version>
+		</dependency>
+		
+		<!-- general utils -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons-lang3.version}</version>
 		</dependency>
 	</dependencies>
 	

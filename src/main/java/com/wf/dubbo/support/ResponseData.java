@@ -1,4 +1,4 @@
-package com.wf.dubbo.controller;
+package com.wf.dubbo.support;
 
 public class ResponseData {
 
