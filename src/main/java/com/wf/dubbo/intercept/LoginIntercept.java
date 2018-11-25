@@ -29,9 +29,10 @@ public class LoginIntercept extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
+		System.out.println("请求URL："+request.getRequestURL().toString());
 		HandlerMethod handlerMethod = (HandlerMethod)handler;
 		Object action = handlerMethod.getBean();
-		if(action instanceof BaseController) {
+		if(!(action instanceof BaseController)) {
 			throw new Exception("异常");
 		}
 		
@@ -47,7 +48,7 @@ public class LoginIntercept extends HandlerInterceptorAdapter {
 				response.getWriter().write(object.toJSONString());
 				return false;
 			}
-			response.sendRedirect("/osdubbo-consumer/login.shtml");
+			response.sendRedirect("/osdubbo-consumer/index/login.shtml");
 			return false;
 		}
 		

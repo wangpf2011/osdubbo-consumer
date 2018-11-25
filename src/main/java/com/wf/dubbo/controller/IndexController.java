@@ -64,15 +64,15 @@ public class IndexController extends BaseController{
     @RequestMapping(value="/submitLogin",method=RequestMethod.POST)
     @ResponseBody
     public ResponseData submitLogin(HttpServletRequest request,String loginname,String password){
-    	UserRequest request1 = new UserRequest();
-        request1.setName(loginname);
-        request1.setPassword(password);
-        UserResponse response = userServices.login(request1);
+    	UserRequest userRequest = new UserRequest();
+    	userRequest.setName(loginname);
+    	userRequest.setPassword(password);
+        UserResponse response = userServices.login(userRequest);
         if("000000".equals(response.getCode())) {
             request.getSession().setAttribute("user","user");
             return setEnumResult(ResponseEnum.SUCCESS, "/");
         }
-        ResponseData data=new ResponseData();
+        ResponseData data = new ResponseData();
         data.setMessage(response.getMsg());
         data.setStatus(ResponseEnum.FAILED.getCode());
         return data;
