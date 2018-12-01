@@ -4,3 +4,5 @@ Dubbo is a high-performance, java based open source RPC framework. This is a Con
 Dubbo Provider、Dubbo Consumer、SpringMVC
 
 JWT session cross-domain
+
+Proxy + InvocationHandler
