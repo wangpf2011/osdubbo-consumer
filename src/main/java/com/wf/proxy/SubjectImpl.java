@@ -1,4 +1,4 @@
-package com.wf.dubbo.proxy;
+package com.wf.proxy;
 
 /**
  * @Description: 被代理对象

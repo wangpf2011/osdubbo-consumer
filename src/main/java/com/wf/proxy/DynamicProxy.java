@@ -1,4 +1,4 @@
-package com.wf.dubbo.proxy;
+package com.wf.proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

@@ -1,4 +1,4 @@
-package com.wf.dubbo.proxy;
+package com.wf.proxy;
 
 /**
  * @Description: 简单的静态代理
