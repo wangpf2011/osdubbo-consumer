@@ -4,6 +4,13 @@ import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.common.RemotingHelper;
 
+/**
+ * 单向发送
+ *
+ * @version: v1.0.0
+ * @author: wangpf
+ * @date: 2019年5月20日 上午9:40:25 
+ */
 public class RocketMQOnewayProducer {
 	public static void main(String[] args) throws Exception{
         //Instantiate with a producer group name.

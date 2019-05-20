@@ -5,6 +5,13 @@ import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.common.RemotingHelper;
 
+/**
+ * 同步发送
+ *
+ * @version: v1.0.0
+ * @author: wangpf
+ * @date: 2019年5月20日 上午9:40:55 
+ */
 public class RocketMQSyncProducer {
 	public static void main(String[] args) throws Exception {
         //Instantiate with a producer group name.

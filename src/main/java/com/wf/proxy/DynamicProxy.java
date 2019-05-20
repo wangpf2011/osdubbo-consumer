@@ -18,9 +18,10 @@ import java.lang.reflect.Proxy;
  */
 public class DynamicProxy {
 	public static void main(String[] args) throws Exception {
-        // 被代理对象
+        // 被代理对象，其中Subject为接口，SubjectImpl为接口实现类
         Subject target = new SubjectImpl();
         // 动态生成的代理对象
+        // target.getClass().getInterfaces()和Java的反射机制有关，它能够获得这个对象所实现的接口
         Subject porxy = (Subject)Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), new InvocationHandler() {
         	@Override
         	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
@@ -30,6 +31,7 @@ public class DynamicProxy {
                 return temp;
         	}
         });
+        // 通过代理对象执行方法say
         porxy.say("wangpf", 20);
     }
 }

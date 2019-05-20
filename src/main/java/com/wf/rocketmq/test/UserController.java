@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class UserController {
 	@Autowired
 	@Qualifier("rocketMQProducer")
-	private RocketMQProducer producer;
+	private RocketMQProducer1 producer;
  
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	public String test() throws MQClientException, RemotingException, MQBrokerException, InterruptedException {
